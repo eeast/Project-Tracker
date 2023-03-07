@@ -22,35 +22,65 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card my-2">
-                    <h4 class="card-title text-center bg-primary p-2">How to Use</h4>
-                    <h5 class="card-subtitle text-muted text-center">demo text</h5>
-                    <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis tenetur laboriosam nostrum vero asperiores obcaecati corrupti dolore libero quisquam, est explicabo illum eius maxime, tempore culpa, incidunt nobis. Doloremque, recusandae!</p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Launch demo modal
+                    <h4 class="card-title text-center bg-primary p-2">Welcome!</h4>
+                    <h5 class="card-subtitle text-muted text-center p-2">How to use this tracker</h5>
+                    <p class="card-text px-5 py-2">This tracker will help you keep track of your current and upcoming projects! <br><br>To begin, press the <em>Add New Project</em> button below and fill in the required information. Then, click <em>Add Project</em> ! <br><br>Your project will be added to the list on the right for easy tracking.</p>
+                    <button type="button" class="btn btn-primary mx-4 mb-4" data-bs-toggle="modal" data-bs-target="#addNewProject">
+                        Add New Project
                     </button>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="card my-2">
-                    <h4 class="card-title text-center bg-danger p-2">Projects List</h4>
-                    <h5 class="card-subtitle text-muted text-center">demo text</h5>
-                    <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis tenetur laboriosam nostrum vero asperiores obcaecati corrupti dolore libero quisquam, est explicabo illum eius maxime, tempore culpa, incidunt nobis. Doloremque, recusandae!</p>
+                    <h4 class="card-title text-center bg-danger p-2">Project List</h4>
+                    <h5 class="card-subtitle text-muted text-center p-2">Keep up the good work!</h5>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Project Type</th>
+                            <th scope="col">Due Date</th>
+                            <th scope="col">Days Remaining</th>
+                          </tr>
+                        </thead>
+                        <tbody id="projectList"></tbody>
+                      </table>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addNewProject" tabindex="-1" aria-labelledby="addNewProject" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="addNewProject">Project Details</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <form action="submit" class="form" id="projectForm">
+                            <div class="form-group">
+                                <label for="projectName">Project Name</label>
+                                <input type="text" class="form-control m-2" id="projectName" placeholder="Dream Big!">
+                            </div>
+                            <div class="form-group">
+                                <label for="projectType">Project Type</label>
+                                <select class="form-select m-2" id="projectType" >
+                                    <option>Physical Self-Care</option>
+                                    <option>Social Self-Care</option>
+                                    <option>Mental Self-Care</option>
+                                    <option>Spiritual Self-Care</option>
+                                    <option>Emotional Self-Care</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dueDate">Due Date</label>
+                                <input type="date" id="dueDate" class="m-2">
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" id="submit">Add Project</button>
                     </div>
                 </div>
             </div>
@@ -59,21 +89,32 @@
     </main>
 
     <script 
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" 
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" 
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" 
+      crossorigin="anonymous">
+    </script>
+
+    <script 
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
       crossorigin="anonymous">
     </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
       integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous">
+    </script>
     
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"
-    ></script>
+    <script 
+      src="https://code.jquery.com/jquery-3.6.3.js" 
+      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" 
+      crossorigin="anonymous">
+    </script>
+
+    <script 
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.js">
+    </script>
 
     <script src="./assets/js/script.js"></script>
 
